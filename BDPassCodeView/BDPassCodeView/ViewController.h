@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UISegmentedControl *passcodeLength;
+- (IBAction)didTapEnablePasscode:(id)sender;
+- (IBAction)didTapLockPasscode:(id)sender;
+- (IBAction)didTapEnterOTP:(id)sender;
 
 
 @end

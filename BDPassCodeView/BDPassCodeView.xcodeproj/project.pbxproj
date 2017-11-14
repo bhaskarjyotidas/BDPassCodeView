@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C13E6A11F84B6970086BC55 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C13E6A01F84B6970086BC55 /* bg.png */; };
 		0C6796A21F835A2300A68CB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6796A11F835A2300A68CB8 /* main.m */; };
 		0C6796A51F835A2300A68CB8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6796A41F835A2300A68CB8 /* AppDelegate.m */; };
 		0C6796A81F835A2300A68CB8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6796A71F835A2300A68CB8 /* ViewController.m */; };
@@ -14,6 +15,9 @@
 		0C6796AD1F835A2300A68CB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C6796AC1F835A2300A68CB8 /* Assets.xcassets */; };
 		0C6796B01F835A2300A68CB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C6796AE1F835A2300A68CB8 /* LaunchScreen.storyboard */; };
 		0C6796BB1F835A2400A68CB8 /* BDPassCodeViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6796BA1F835A2400A68CB8 /* BDPassCodeViewUITests.m */; };
+		0C6796C71F835BFD00A68CB8 /* BDPassCode.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6796C61F835BFD00A68CB8 /* BDPassCode.xib */; };
+		0C6796CA1F835C1C00A68CB8 /* BDPassCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6796C91F835C1C00A68CB8 /* BDPassCode.m */; };
+		0C6796CC1F83683800A68CB8 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C6796CB1F83683800A68CB8 /* delete.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C13E6A01F84B6970086BC55 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		0C67969D1F835A2300A68CB8 /* BDPassCodeView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BDPassCodeView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C6796A11F835A2300A68CB8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0C6796A31F835A2300A68CB8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -40,6 +45,10 @@
 		0C6796B61F835A2400A68CB8 /* BDPassCodeViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BDPassCodeViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C6796BA1F835A2400A68CB8 /* BDPassCodeViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BDPassCodeViewUITests.m; sourceTree = "<group>"; };
 		0C6796BC1F835A2400A68CB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C6796C61F835BFD00A68CB8 /* BDPassCode.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BDPassCode.xib; sourceTree = "<group>"; };
+		0C6796C81F835C1C00A68CB8 /* BDPassCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDPassCode.h; sourceTree = "<group>"; };
+		0C6796C91F835C1C00A68CB8 /* BDPassCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDPassCode.m; sourceTree = "<group>"; };
+		0C6796CB1F83683800A68CB8 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +90,12 @@
 		0C67969F1F835A2300A68CB8 /* BDPassCodeView */ = {
 			isa = PBXGroup;
 			children = (
+				0C6796C51F835BFD00A68CB8 /* BDPassCode */,
 				0C6796A31F835A2300A68CB8 /* AppDelegate.h */,
 				0C6796A41F835A2300A68CB8 /* AppDelegate.m */,
 				0C6796A61F835A2300A68CB8 /* ViewController.h */,
 				0C6796A71F835A2300A68CB8 /* ViewController.m */,
+				0C13E6A01F84B6970086BC55 /* bg.png */,
 				0C6796A91F835A2300A68CB8 /* Main.storyboard */,
 				0C6796AC1F835A2300A68CB8 /* Assets.xcassets */,
 				0C6796AE1F835A2300A68CB8 /* LaunchScreen.storyboard */,
@@ -109,6 +120,17 @@
 				0C6796BC1F835A2400A68CB8 /* Info.plist */,
 			);
 			path = BDPassCodeViewUITests;
+			sourceTree = "<group>";
+		};
+		0C6796C51F835BFD00A68CB8 /* BDPassCode */ = {
+			isa = PBXGroup;
+			children = (
+				0C6796CB1F83683800A68CB8 /* delete.png */,
+				0C6796C61F835BFD00A68CB8 /* BDPassCode.xib */,
+				0C6796C81F835C1C00A68CB8 /* BDPassCode.h */,
+				0C6796C91F835C1C00A68CB8 /* BDPassCode.m */,
+			);
+			path = BDPassCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,7 +219,10 @@
 			files = (
 				0C6796B01F835A2300A68CB8 /* LaunchScreen.storyboard in Resources */,
 				0C6796AD1F835A2300A68CB8 /* Assets.xcassets in Resources */,
+				0C13E6A11F84B6970086BC55 /* bg.png in Resources */,
 				0C6796AB1F835A2300A68CB8 /* Main.storyboard in Resources */,
+				0C6796CC1F83683800A68CB8 /* delete.png in Resources */,
+				0C6796C71F835BFD00A68CB8 /* BDPassCode.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +243,7 @@
 				0C6796A81F835A2300A68CB8 /* ViewController.m in Sources */,
 				0C6796A51F835A2300A68CB8 /* AppDelegate.m in Sources */,
 				0C6796A21F835A2300A68CB8 /* main.m in Sources */,
+				0C6796CA1F835C1C00A68CB8 /* BDPassCode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +440,7 @@
 				0C6796C11F835A2400A68CB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0C6796C21F835A2400A68CB8 /* Build configuration list for PBXNativeTarget "BDPassCodeViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +449,7 @@
 				0C6796C41F835A2400A68CB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
