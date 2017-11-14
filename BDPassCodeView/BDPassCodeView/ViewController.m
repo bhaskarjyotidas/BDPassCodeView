@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "BDPassCode.h"
+#import "BDPassCodeView.h"
 
 @interface ViewController () <BDPassCodeDelegate>
 
@@ -17,7 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [BDPassCodeView setBDPasscodeDelegate:(id)self];
+    [BDPassCodeView saveApplicationPasscodelength:PasscodeLengthFourDigit];
+    [BDPassCodeView saveApplicationPasscode:@"1234"];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -37,20 +39,20 @@
 }
 
 - (IBAction)didTapEnablePasscode:(id)sender {
-    [BDPassCode setBDPasscodeDelegate:(id)self];
-    [BDPassCode saveApplicationPasscodelength:self.passcodeLength.selectedSegmentIndex == 0 ? PasscodeLengthSixDigit : PasscodeLengthFourDigit];
-    [BDPassCode showPasscodeViewWithType:PassCodeTypeNew];
+    [BDPassCodeView setBDPasscodeDelegate:(id)self];
+    [BDPassCodeView saveApplicationPasscodelength:self.passcodeLength.selectedSegmentIndex == 0 ? PasscodeLengthSixDigit : PasscodeLengthFourDigit];
+    [BDPassCodeView showPasscodeViewWithType:PassCodeTypeNew];
 }
 
 - (IBAction)didTapLockPasscode:(id)sender {
-    [BDPassCode resetLastPassCodeEnterTime];
-    [BDPassCode setBDPasscodeDelegate:(id)self];
-    [BDPassCode showPasscodeViewWithType:PassCodeTypeCheck];
+    [BDPassCodeView resetLastPassCodeEnterTime];
+    [BDPassCodeView setBDPasscodeDelegate:(id)self];
+    [BDPassCodeView showPasscodeViewWithType:PassCodeTypeCheck];
 }
 
 - (IBAction)didTapEnterOTP:(id)sender {
-    [BDPassCode setBDPasscodeDelegate:(id)self];
-    [BDPassCode showPasscodeViewWithType:PassCodeTypeOTP];
+    [BDPassCodeView setBDPasscodeDelegate:(id)self];
+    [BDPassCodeView showPasscodeViewWithType:PassCodeTypeSixDigitOTP];
 }
 
 @end

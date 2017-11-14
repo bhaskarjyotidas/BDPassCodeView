@@ -1,12 +1,12 @@
 //
-//  BDPassCode.m
+//  BDPassCodeView.m
 //  BDPassCodeView
 //
 //  Created by Bhaskar Jyoti Das on 03/10/17.
 //  Copyright © 2017 Bhaskar Jyoti Das. All rights reserved.
 //
 
-#import "BDPassCode.h"
+#import "BDPassCodeView.h"
 #define kApplicationPasscodeLength @"kApplicationPasscodeLength"
 #define kApplicationPasscode @"kApplicationPasscode"
 #define kDefaultPasscodeEnterTime 30.0
@@ -63,7 +63,7 @@
 @end
 
 
-@interface BDPassCode ()
+@interface BDPassCodeView ()
 @property NSTimeInterval lastPasscodeEnterTime;
 @property (weak, nonatomic) IBOutlet BDGlowLabel *pinOneView;
 @property (weak, nonatomic) IBOutlet BDGlowLabel *pinSixView;
@@ -87,8 +87,8 @@
 
 @end
 
-@implementation BDPassCode
-static BDPassCode *sharedMyManager = nil;
+@implementation BDPassCodeView
+static BDPassCodeView *sharedMyManager = nil;
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -138,7 +138,7 @@ static BDPassCode *sharedMyManager = nil;
 - (instancetype)init
 {
     NSBundle *bundle = [NSBundle mainBundle];
-    self = [[bundle loadNibNamed:@"BDPassCode" owner:self options:nil] objectAtIndex:0];
+    self = [[bundle loadNibNamed:@"BDPassCodeView" owner:self options:nil] objectAtIndex:0];
     if (self) {
     }
     return self;
@@ -193,11 +193,16 @@ static BDPassCode *sharedMyManager = nil;
 - (void)reloadPassCodeLength
 {
     self.currentPasscodeLength = [[[NSUserDefaults standardUserDefaults] objectForKey:kApplicationPasscodeLength] integerValue];
-    if (self.currentPasscodeLength < PasscodeLengthFourDigit) {
-        self.currentPasscodeLength = PasscodeLengthSixDigit;
-        [BDPassCode saveApplicationPasscodelength:PasscodeLengthSixDigit];
+    [self reloadPassCodeLength:self.currentPasscodeLength];
+}
+
+- (void)reloadPassCodeLength:(PasscodeLength)length
+{
+    if (length < PasscodeLengthFourDigit) {
+        length = PasscodeLengthSixDigit;
+        [BDPassCodeView saveApplicationPasscodelength:PasscodeLengthSixDigit];
     }
-    if (self.currentPasscodeLength == PasscodeLengthFourDigit) {
+    if (length == PasscodeLengthFourDigit) {
         self.pinOneView.hidden = YES;
         self.pinSixView.hidden = YES;
     }
@@ -217,7 +222,7 @@ static BDPassCode *sharedMyManager = nil;
 + (void)saveApplicationPasscode:(NSString *)passcode
 {
     if (passcode.length == PasscodeLengthFourDigit || passcode.length == PasscodeLengthSixDigit) {
-        [BDPassCode saveApplicationPasscodelength:passcode.length];
+        [BDPassCodeView saveApplicationPasscodelength:passcode.length];
         [[NSUserDefaults standardUserDefaults] setValue:passcode forKey:kApplicationPasscode];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
@@ -237,8 +242,8 @@ static BDPassCode *sharedMyManager = nil;
     switch (type) {
         case PassCodeTypeNew:
         {
-            sharedMyManager.flagPreviousPassCode = [BDPassCode getPassCode];
-            [BDPassCode resetApplicationPassCode];
+            sharedMyManager.flagPreviousPassCode = [BDPassCodeView getPassCode];
+            [BDPassCodeView resetApplicationPassCode];
             sharedMyManager.lastPasscodeEnterTime = 0;
             sharedMyManager.flagNewPassCode = @"";
             sharedMyManager.informationLabel.text = kNewPasscodeEnterText;
@@ -267,13 +272,16 @@ static BDPassCode *sharedMyManager = nil;
                 sharedMyManager.cancelButton.hidden = YES;
             }
             else{
-                [BDPassCode showPasscodeViewWithType:PassCodeTypeNew];
+                [BDPassCodeView showPasscodeViewWithType:PassCodeTypeNew];
                 return;
             }
         }
             break;
-        case PassCodeTypeOTP:
+        case PassCodeTypeFourDigitOTP:
+        case PassCodeTypeSixDigitOTP:
         {
+            sharedMyManager.currentPasscodeLength = type == PassCodeTypeFourDigitOTP? PasscodeLengthFourDigit : PasscodeLengthSixDigit;
+            [sharedMyManager reloadPassCodeLength:sharedMyManager.currentPasscodeLength];
             [sharedMyManager.resetButton setTitle:@"Resend OTP" forState:UIControlStateNormal];
             sharedMyManager.informationLabel.text = kEnterOTPText;
             sharedMyManager.resetButton.hidden = NO;
@@ -331,7 +339,7 @@ static BDPassCode *sharedMyManager = nil;
             break;
         case PassCodeTypeCheck:
         {
-            self.flagPreviousPassCode = [BDPassCode getPassCode];
+            self.flagPreviousPassCode = [BDPassCodeView getPassCode];
             self.currentPasscodeType = PassCodeTypeNew;
             self.flagNewPassCode = @"";
             self.informationLabel.text = kNewPasscodeEnterText;
@@ -340,7 +348,8 @@ static BDPassCode *sharedMyManager = nil;
             [self passcodeViewAnimation];
         }
             break;
-        case PassCodeTypeOTP:
+        case PassCodeTypeFourDigitOTP:
+        case PassCodeTypeSixDigitOTP:
         {
             [self passcodeViewAnimation];
         }
@@ -356,7 +365,7 @@ static BDPassCode *sharedMyManager = nil;
 
 - (IBAction)didTapCancelButton:(id)sender {
     if (self.currentPasscodeType == PassCodeTypeNew) {
-        [BDPassCode saveApplicationPasscode:self.flagPreviousPassCode];
+        [BDPassCodeView saveApplicationPasscode:self.flagPreviousPassCode];
     }
     [self dismiss];
 }
@@ -383,7 +392,7 @@ static BDPassCode *sharedMyManager = nil;
         {
             if ([self.flagNewPassCode isEqualToString:self.enteredPassCode])
             {
-                [BDPassCode saveApplicationPasscode:self.enteredPassCode];
+                [BDPassCodeView saveApplicationPasscode:self.enteredPassCode];
                 [self dismiss];
                 if ([self.delegate respondsToSelector:@selector(_BDPasscodeEnterSuccessfullyCompleteForPassCodeType:withEnteredValue:)]) {
                     [self.delegate _BDPasscodeEnterSuccessfullyCompleteForPassCodeType:self.currentPasscodeType withEnteredValue:self.enteredPassCode];
@@ -410,7 +419,8 @@ static BDPassCode *sharedMyManager = nil;
             }
         }
             break;
-        case PassCodeTypeOTP:
+        case PassCodeTypeFourDigitOTP:
+        case PassCodeTypeSixDigitOTP:
         {
             self.enterOTPText = self.enteredPassCode;
             if ([self.delegate respondsToSelector:@selector(_BDPasscodeEnterSuccessfullyCompleteForPassCodeType:withEnteredValue:)]) {

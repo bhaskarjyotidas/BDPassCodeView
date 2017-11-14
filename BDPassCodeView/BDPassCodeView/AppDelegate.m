@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "BDPassCode.h"
+#import "BDPassCodeView.h"
 @interface AppDelegate ()
 
 @end
@@ -40,7 +40,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [BDPassCode showPasscodeViewWithType:PassCodeTypeCheck];
+    
+    //Check already passcode is set for the app otherwise it will try to set a new passcode.
+    [BDPassCodeView showPasscodeViewWithType:PassCodeTypeCheck];
 }
 
 

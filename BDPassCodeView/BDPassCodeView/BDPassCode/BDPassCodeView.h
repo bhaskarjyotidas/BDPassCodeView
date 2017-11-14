@@ -1,5 +1,5 @@
 //
-//  BDPassCode.h
+//  BDPassCodeView.h
 //  BDPassCodeView
 //
 //  Created by Bhaskar Jyoti Das on 03/10/17.
@@ -22,7 +22,8 @@ typedef NS_ENUM(NSInteger, PassCodeType){
     PassCodeTypeNew = 0,
     PassCodeTypeReEnter = 1,
     PassCodeTypeCheck = 2,
-    PassCodeTypeOTP = 3,
+    PassCodeTypeFourDigitOTP = 3,
+    PassCodeTypeSixDigitOTP = 4,
 };
 
 @protocol BDPassCodeDelegate <NSObject>
@@ -39,7 +40,7 @@ typedef NS_ENUM(NSInteger, PassCodeType){
 @end
 
 
-@interface BDPassCode : UIView
+@interface BDPassCodeView : UIView
 + (void)showPasscodeViewWithType:(PassCodeType)type;
 + (void)setBDPasscodeDelegate:(id)delegate;
 + (void)saveApplicationPasscodelength:(PasscodeLength)length;
