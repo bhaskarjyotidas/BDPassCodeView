@@ -17,9 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [BDPassCodeView setBDPasscodeDelegate:(id)self];
-    [BDPassCodeView saveApplicationPasscodelength:PasscodeLengthFourDigit];
-    [BDPassCodeView saveApplicationPasscode:@"1234"];
+//    [BDPassCodeView setBDPasscodeDelegate:(id)self];
+//    [BDPassCodeView saveApplicationPasscodelength:PasscodeLengthFourDigit];
+//    [BDPassCodeView saveApplicationPasscode:@"1234"];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
