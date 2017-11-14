@@ -11,10 +11,10 @@ BDPassCodeView is a Objective C custom passcode lock view and otp enterview. whi
 
 ## ScreenShots
 
-![](https://raw.githubusercontent.com/BhaskarJyotiDas/BDCustomAlert/master/ScreenShots/1.png?raw=true)
-![](https://raw.githubusercontent.com/BhaskarJyotiDas/BDCustomAlert/master/ScreenShots/2.png?raw=true)
-![](https://raw.githubusercontent.com/BhaskarJyotiDas/BDCustomAlert/master/ScreenShots/3.png?raw=true)
-![](https://raw.githubusercontent.com/BhaskarJyotiDas/BDCustomAlert/master/ScreenShots/4.png?raw=true)
+![](https://raw.githubusercontent.com/BhaskarJyotiDas/BDPassCodeView/master/ScreenShots/1.png?raw=true)
+![](https://raw.githubusercontent.com/BhaskarJyotiDas/BDPassCodeView/master/ScreenShots/2.png?raw=true)
+![](https://raw.githubusercontent.com/BhaskarJyotiDas/BDPassCodeView/master/ScreenShots/3.png?raw=true)
+![](https://raw.githubusercontent.com/BhaskarJyotiDas/BDPassCodeView/master/ScreenShots/4.png?raw=true)
 
 # How To Use
 ## import BDPassCodeView file like
